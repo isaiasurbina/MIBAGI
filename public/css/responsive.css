@@ -1,0 +1,15 @@
+/* phones */
+@media only screen and (max-width: 600px) {
+    section.big-cols{
+        margin-top: 0 !important;
+    }
+    .big-cols .row > div {
+        margin-top: 10px;
+    }
+    .big-cols h3 {
+        font-size: medium;
+    }
+    .order-area{
+        padding-bottom: 400px;
+    }
+}
