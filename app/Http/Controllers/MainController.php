@@ -7,6 +7,10 @@ use App\StoreRequests;
 use App\product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StoreRequestResume;
+
+
 class MainController extends Controller
 {
     //
@@ -65,6 +69,7 @@ class MainController extends Controller
             $countries = [];
             $showForm = false;
             $source = compact('countries', 'showForm', 'user');
+            Mail::to($user)->send(new StoreRequestResume($newRequest));
             return view('store.register-page', $source);
         else:
             $countries = [];

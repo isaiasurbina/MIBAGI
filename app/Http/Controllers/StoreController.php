@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
+
 class StoreController extends Controller
 {
     //
@@ -76,6 +77,11 @@ class StoreController extends Controller
         return response()->json($variations);
     }
     public function productSave(Request $request){
+
+        $validated = $request->validate([
+            'titulo' => 'required',
+            'cats' => 'required'
+        ]);
         $edit = ($request->edit == 'true') ? true:false;
 
         $price = (isset($request->price)) ? floatval($request->price) * 100:0.00;

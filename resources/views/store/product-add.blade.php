@@ -62,7 +62,7 @@
                                                 <div class="alert-text">
                                                     Todos los campos con * con requeridos, favor ingresar los campos requeridos.
                                                 </div>
-                                            </div>
+                                            </div>  
                                         @endif
                                         <div class="row my-2">
                                             <div class="col-md-3 offset-md-1 text-right">
@@ -179,7 +179,7 @@
                                     <div class="p-5">
                                         <div class="row my-2">
                                             <div class="col-md-3 offset-md-1 text-right">
-                                                <label for="titulo"><b>Precio</b> <span class="text-danger">*</span></label>
+                                                <label for="titulo"><b>Precio</b> </label>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="input-group mb-3">
@@ -197,7 +197,7 @@
                                         </div>
                                         <div class="row my-2">
                                             <div class="col-md-3 offset-md-1 text-right">
-                                                <label for="existencias"><b>Existencias</b> <span class="text-danger">*</span></label>
+                                                <label for="existencias"><b>Existencias</b></label>
                                             </div>
                                             <div class="col-md-3">
                                                 @if(!$edit)
@@ -221,7 +221,7 @@
                                     <div class="p-5">
                                         <div class="row my-2 justify-content-center">
                                             <div class="col-6">
-                                                <label for="titulo"><b>Descripcion corta</b> <span class="text-danger">*</span></label>
+                                                <label for="titulo"><b>Descripcion corta</b></label>
                                             </div>
                                         </div>
                                         <div class="row my-2 justify-content-center">

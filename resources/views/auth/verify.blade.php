@@ -1,25 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<div class="breadcrumb-area common-page-bg">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-md-8">
+                <div class="card">
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                    <div class="card-body">
+                        <div class="section-title my-4 text-center">
+                            <h4>Verifica tu <span>identidad</span></h4>
                         </div>
-                    @endif
+                        @if (session('resent'))
+                            <div class="alert alert-success p-3 my-3" role="alert">
+                                {{ __('Se ha enviado un correo nuevo para verificar tu dirección de correo electrónico') }}
+                            </div>
+                        @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+                        <p>{{ __('Antes de proceder, favor verifica tu identidad, se ha enviado un mensaje para verificar tu dirección de correo electrónico.') }}
+                        </p>
+                        <p>Haz clic en el siguiente boton para solicitar un nuevo mensaje de verificación.</p>
+                        <form class="d-block text-center" method="POST" action="{{ route('verification.resend') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-warning text-white">{{ __('REENVIAR') }}</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

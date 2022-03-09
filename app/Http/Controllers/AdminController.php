@@ -9,6 +9,9 @@ use App\StoreRequests;
 use App\product;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StoreCreated;
+
 
 class AdminController extends Controller
 {
@@ -86,10 +89,11 @@ class AdminController extends Controller
             $STrequest = StoreRequests::find($request->stRequestID);
             $STrequest->delete();
             $code = md5($user->id) . uniqid();
-            $newStore = Store::create([ 'name' => $request->store_name, 'identifier' => 'STR' . $code, 'logo' => '', 'banner' => '' ]);
+            $newStore = Store::create([ 'name' => $request->store_name, 'identifier' => 'STR' . $code ]);
             $user->stores()->attach($newStore);
             $user->roles()->attach([2]); //asigna el rol de tienda
 
+            Mail::to($user)->send(new StoreCreated($newStore));
             return redirect()->route('admin.stores')->with('alert-success', 'La tienda ha sido creada exitosamente.');
         }else{
             return back()->with('alert-danger', 'Error al crear la tienda, usuario no encontrado.');
