@@ -145,7 +145,7 @@ endif;
               <span class="navbar-toggler-icon"></span>
             </button> --}}
         
-            <div class="collapse navbar-collapse" id="navbarColor01">
+            <div class="navbar-collapse" id="navbarColor01">
               
                 <div class="main-search d-xs-none d-sm-block mr-auto">
                     
@@ -435,7 +435,7 @@ endif;
                       <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-7">
                               <div class="copyright">
-                                  <p> <b>MIBAGI</b> - Todos los derechos reservados <i class="far fa-copyright"></i> 2020.</p>
+                                  <p> <b>MIBAGI</b> - Todos los derechos reservados <i class="far fa-copyright"></i> 2022.</p>
                               </div>
                           </div>
                          <div class="col-xl-6 col-lg-6 col-md-5">

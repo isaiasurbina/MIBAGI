@@ -392,7 +392,7 @@
 <!-- deal-area-end -->
 
 <!-- order-area-start -->
-<div class="order-area pt-130 pb-100 pos-rel" style="background-image: url({{ asset('img/oficial/app/slider-para-la-app-web.png') }})">
+{{-- <div class="order-area pt-130 pb-100 pos-rel" style="background-image: url({{ asset('img/oficial/app/slider-para-la-app-web.png') }})">
     <div class="shape d-none d-xl-block">
         <div class="shape-item order-01 bounce-animate"><img src="{{ asset('img/demo/01(7).png') }}" alt=""></div>
         <div class="shape-item order-02 bounce-animate"><img src="{{ asset('img/demo/02(5).png') }}" alt=""></div>
@@ -419,14 +419,10 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-xl-6 col-lg-5">
-                <div class="order-img mb-30">
-                    <img src="" alt="">
-                </div>
-            </div> --}}
+            
         </div>
     </div>
-</div>
+</div> --}}
 <!-- order-area-end -->
 
 @endsection

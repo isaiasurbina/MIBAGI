@@ -66,11 +66,7 @@
                 </div>
                 <div class="list-group">
                     <a href="javascript:void(0)" class="list-group-item d-flex justify-content-between">
-                        Metodos de retiro
-                        <i class="fal fa-chevron-right"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="list-group-item d-flex justify-content-between">
-                        Metodos de pago
+                        Solicitud de retiro
                         <i class="fal fa-chevron-right"></i>
                     </a>
                 </div>

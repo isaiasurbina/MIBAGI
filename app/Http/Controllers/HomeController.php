@@ -60,13 +60,6 @@ class HomeController extends Controller
                             "desc" : "Gestiona tus direcciones de entrega",
                             "icon" : "fa-location-arrow",
                             "color" : "gray"
-                            },
-                        "3" : {
-                            "link" : "user.wishlist",
-                            "title" : "Lista de deseos",
-                            "desc" : "Ver productos que has guardado en tu lista",
-                            "icon" : "fa-clipboard-list",
-                            "color" : "gray"
                             }
                         }');
                     
@@ -78,3 +71,11 @@ class HomeController extends Controller
     }
     
 }
+/* ,
+"3" : {
+"link" : "user.wishlist",
+"title" : "Lista de deseos",
+"desc" : "Ver productos que has guardado en tu lista",
+"icon" : "fa-clipboard-list",
+"color" : "gray"
+} */
