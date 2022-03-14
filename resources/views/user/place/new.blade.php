@@ -3,7 +3,7 @@
 @section('content')
 
 @push('head')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOnjcbLK6NW95KP7AXIuhxNBwXlMFVW1c&callback=initMap&libraries=&v=weekly" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDP49hnVIMTEI3ZjKo7c3K_0WlJMKlGag&callback=initMap&libraries=&v=weekly" defer></script>
 <script src="{{ asset('js/pages/new-place.js') }}"></script>
 @endpush
 <div class="gray-page-bg">
