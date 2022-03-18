@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App;
 use App\StoreRequests;
+use App\categories;
 use App\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\StoreRequestResume;
@@ -27,6 +29,16 @@ class MainController extends Controller
     }
     public function storeStartPage(){
         return view('store.start');
+    }
+    public function search(Request $request){
+        $currentCategory = categories::where('slug', $request->in)->first();
+        $products = $currentCategory->products()->where('title', 'like', '%'.$request->sthis.'%')
+                                        ->where('status','PUBLISHED')
+                                        ->orderBy('plus')
+                                        ->take(10)
+                                        ->get();
+        $source = compact('request', 'currentCategory', 'products');
+        return view('public.search', $source);
     }
     public function showView($view){
         return view('content.' . $view);

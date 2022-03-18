@@ -149,15 +149,12 @@ endif;
               
                 <div class="main-search d-xs-none d-sm-block mr-auto">
                     
-                    <form class="main-search-form">
+                    <form class="main-search-form" method="get" action="{{ route('search') }}">
+                        @csrf
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                    @if (Request::is('category/*'))
-                                        @php
-                                        /* $catSlug = Request::segment(2);
-                                        $currentCategory = App\categories::where('slug',$catSlug)->first(); */
-
-                                        @endphp
+                                    @if (Request::is('category/*') || Request::is('search') )
+                                       
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="{{ $currentCategory->slug }}" aria-expanded="false">{{ $currentCategory->name }}</button>
                                     @else
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="" aria-expanded="false">Todo</button>
@@ -196,7 +193,8 @@ endif;
                                         @endforeach
                                     </div>
                             </div>
-                            <input class="form-control" placeholder="Buscar" type="text">
+                            <input name="in" id="search-cat" type="hidden">
+                            <input class="form-control" placeholder="Buscar" value="{{ Request::get('sthis') ?? '' }}" name="sthis" id="search-input" type="text">
                             <div class="input-group-append">
                                 <button class="btn btn-warning" type="submit"><i class="far fa-search"></i></button>
                             </div>

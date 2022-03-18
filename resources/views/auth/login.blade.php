@@ -10,6 +10,17 @@
                         <div class="section-title">
                             <h4 class="my-3 text-center">{!! __('Ingresa a tu <span>cuenta</span>') !!}</h4>
                         </div>
+                        <div>
+                            @if(count($errors) > 0)
+                            @foreach( $errors->all() as $message )
+                             <div class="alert alert-danger invalid-feedback display-hide p-3">
+                              <button class="close" data-close="alert"></button>
+                              <span>{{ $message }}</span>
+                             </div>
+                            @endforeach
+                           @endif
+                            
+                        </div>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
     
@@ -17,13 +28,13 @@
                                 <label for="email" class="form-label">{{ __('Correo electrónico') }}</label>
     
                                 <div class="">
-                                    <input id="email" type="email" class="form-control border-dark @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control border-dark" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
     
-                                    @error('email')
+                                    {{-- @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                    @enderror --}}
                                 </div>
                             </div>
     
@@ -31,13 +42,13 @@
                                 <label for="password" class="">{{ __('Clave') }}</label>
     
                                 <div class="">
-                                    <input id="password" type="password" class="form-control border-dark @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control border-dark" name="password" required autocomplete="current-password">
     
-                                    @error('password')
+                                    {{-- @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                    @enderror --}}
                                 </div>
                             </div>
     

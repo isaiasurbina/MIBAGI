@@ -47,6 +47,7 @@ Route::get('/order/finish', 'CartController@finishorder')->name('cart.finish');
 
 /* Buyer */
 Route::get('/home', 'HomeController@index')->name('home'); 
+Route::get('/search', 'MainController@search')->name('search'); //search route item
 Route::get('/user/places', 'UserController@places')->name('user.places'); 
     Route::get('/user/places/new', 'UserController@newPlace')->name('user.places.new'); 
     Route::get('/user/places/edit', 'UserController@editPlace')->name('user.places.edit'); 

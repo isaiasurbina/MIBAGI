@@ -9,13 +9,14 @@ jQuery(function($){
         $('.left-sidebar').removeClass('open');
     });
     $('.dropdown-item').on("click", function(e){
+        //search dropdown
         var me = $(this);
         var parent = me.parent();
         var parentBtnId = parent.attr("aria-labelledby");
         var btnhandler = $("#" + parentBtnId);
         
         btnhandler.text(me.text()).attr("data-selected", me.attr('data-value'));
-
+        $('#search-cat').val(me.attr('data-value'));
     });
     $(".left-sidebar .parent-menu-item").on('click',function(e){
         var target = $(this).attr("data-target");

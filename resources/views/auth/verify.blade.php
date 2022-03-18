@@ -19,7 +19,7 @@
 
                         <p>{{ __('Antes de proceder, favor verifica tu identidad, se ha enviado un mensaje para verificar tu dirección de correo electrónico.') }}
                         </p>
-                        <p>Haz clic en el siguiente boton para solicitar un nuevo mensaje de verificación.</p>
+                        <p>Si no has recibido el correo de activación, haz clic en el siguiente boton para solicitar un nuevo mensaje de verificación.</p>
                         <form class="d-block text-center" method="POST" action="{{ route('verification.resend') }}">
                             @csrf
                             <button type="submit" class="btn btn-warning text-white">{{ __('REENVIAR') }}</button>
