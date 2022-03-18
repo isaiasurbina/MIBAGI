@@ -718,6 +718,8 @@
     "Zimbabwe": "Zimbabwe",
     "Zip / Postal Code": "Zip / Código postal",
     "Åland Islands": "Islas Åland", 
-    "auth.failed": "Correo electrónico o contraseña incorrectos."
-
+    "auth.failed": "Correo electrónico o contraseña incorrectos.",
+    "validation.min.string": "El campo debe tener :min caracteres como mínimo.",
+    "validation.unique": "El campo ya existe en nuestra base de datos",
+    "validation.confirmed": "El campo no concuerda."
   }
