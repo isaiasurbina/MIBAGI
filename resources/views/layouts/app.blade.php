@@ -154,8 +154,9 @@ endif;
                         <div class="input-group">
                             <div class="input-group-prepend">
                                     @if (Request::is('category/*') || Request::is('search') )
-                                       
+                                        @if ($currentCategory)
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="{{ $currentCategory->slug }}" aria-expanded="false">{{ $currentCategory->name }}</button>
+                                        @endif
                                     @else
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="" aria-expanded="false">Todo</button>
                                     @endif
@@ -298,8 +299,8 @@ endif;
                     @endforeach
                     <div class="list-group-divider list-group-item text-uppercase"><small>Ayuda y Configuracion</small></div>
                     <a class="list-group-item list-group-item-action no-border" href="{{ route('home') }}">Tu Cuenta</a>
-                    <a class="list-group-item list-group-item-action no-border" href="{{ route('user.profile') }}">Idioma</a>
-                    <a class="list-group-item list-group-item-action no-border" href="#">Servicio al cliente</a>
+                    {{-- <a class="list-group-item list-group-item-action no-border" href="{{ route('user.profile') }}">Idioma</a> --}}
+                    <a class="list-group-item list-group-item-action no-border" href="{{ route('support') }}">Servicio al cliente</a>
                     <a class="list-group-item list-group-item-action no-border" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         {{ __('Salir') }}
                     </a>

@@ -31,12 +31,23 @@ class MainController extends Controller
         return view('store.start');
     }
     public function search(Request $request){
-        $currentCategory = categories::where('slug', $request->in)->first();
-        $products = $currentCategory->products()->where('title', 'like', '%'.$request->sthis.'%')
-                                        ->where('status','PUBLISHED')
-                                        ->orderBy('plus')
-                                        ->take(10)
-                                        ->get();
+        $products = [];
+        $currentCategory = [];
+        if($request->in != ''):
+            $currentCategory = categories::where('slug', $request->in)->first();
+            $products = $currentCategory->products()->where('title', 'like', '%'.$request->sthis.'%')
+                                            ->where('status','PUBLISHED')
+                                            ->orderBy('plus')
+                                            ->take(10)
+                                            ->get();
+        else:
+            $products = product::where('title','like','%'.$request->sthis.'%')
+                                            ->where('status','PUBLISHED')
+                                            ->orderBy('plus')
+                                            ->take(10)
+                                            ->get();
+                                            
+        endif;
         $source = compact('request', 'currentCategory', 'products');
         return view('public.search', $source);
     }

@@ -28,12 +28,13 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'MainController@welcome')->name('welcome');
 Route::get('/contact-us', 'MainController@contactPage')->name('contact-us');
 Route::get('/terms-conditions', 'MainController@termsPage')->name('terms');
-Route::get('/support', 'MainController@support')->name('support');
+Route::get('/customer-service', 'MainController@support')->name('support');
 Route::get('/deliver/drivers', 'MainController@introDrivers')->name('drivers.intro');
 
 Route::get('/category/{category}', 'ProductController@category')->name('product.category');
 Route::get('/product/{product}', 'ProductController@showProduct')->name('product.single');
 Route::get('/stores/{store}', 'ProductController@store')->name('product.store');
+
 
 /* Carrito de compras */
 Route::get('/cart', 'CartController@showCart')->name('cart');
