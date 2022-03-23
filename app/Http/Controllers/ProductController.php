@@ -6,6 +6,7 @@ use App\Store;
 use App\categories;
 use App\product;
 use App\filter;
+use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,8 +30,15 @@ class ProductController extends Controller
     }
     public function store($store){
         $store = Store::where(DB::raw('md5(id)'), $store)->first();
+        if($store):
+            if($store->banner!=''):
+                $store->banner_url = Upload::getURLByID($store->banner);
+            endif;
+            $source = compact('store');
+        else:
 
-        $source = compact('store');
+        endif;
+        
 
         return view('product.store', $source);
     }

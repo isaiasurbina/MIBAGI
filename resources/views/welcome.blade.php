@@ -143,7 +143,7 @@
                     <div class="swiper-slide">
                         <div class="card">
                             <a href="{{ $link }}">
-                                <div class="card-header-image" style="background-image: url('{{ $item->thumbnail }}')"></div>
+                                <div class="card-header-image" style="background-image: url('{{ env('APP_URL') . $item->thumbnail }}')"></div>
                             </a>
                             <div class="card-body">
                                 <div class="text-nowrap text-truncate">

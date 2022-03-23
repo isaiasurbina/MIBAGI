@@ -20,7 +20,7 @@
                                 <div class="list-group-item">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="{{ $product->thumbnail }}" class="product-th" />
+                                            <img src="{{ env('APP_URL') . $product->thumbnail }}" class="product-th" />
                                         </div>
                                         <div class="col-9">
                                             <div class="d-flex w-100 justify-content-between">

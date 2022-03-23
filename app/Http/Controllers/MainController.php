@@ -6,6 +6,8 @@ use App;
 use App\StoreRequests;
 use App\categories;
 use App\product;
+use App\Store;
+use App\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -32,6 +34,7 @@ class MainController extends Controller
     }
     public function search(Request $request){
         $products = [];
+        $stores = [];
         $currentCategory = [];
         if($request->in != ''):
             $currentCategory = categories::where('slug', $request->in)->first();
@@ -46,9 +49,21 @@ class MainController extends Controller
                                             ->orderBy('plus')
                                             ->take(10)
                                             ->get();
+
+            if(count($products) == 0):
+                //search in stores
+                $stores = Store::where('name', 'like', '%'.$request->sthis.'%')
+                                ->take(10)
+                                ->get();
+                foreach ($stores as $store) {
+                    if($store->banner!=''):
+                        $store->banner_url = Upload::getURLByID($store->banner);
+                    endif;
+                }
+            endif;
                                             
         endif;
-        $source = compact('request', 'currentCategory', 'products');
+        $source = compact('request', 'currentCategory', 'products', 'stores');
         return view('public.search', $source);
     }
     public function showView($view){

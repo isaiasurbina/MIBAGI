@@ -23,7 +23,8 @@ class CartController extends Controller
         $this->middleware('verified');
     }
     public function showCart(){
-        $cart = Cart::where('status',1)->first();
+        $user = auth()->user();
+        $cart = $user->carts()->where('status',1)->first();
         $subtotal = 0;
         if($cart){
             foreach ($cart->products()->get() as $product) {
@@ -35,6 +36,7 @@ class CartController extends Controller
 
         return view('cart.index',$source);
     }
+    //agregar a la bolsa
     public function store(Request $request){
         $user = auth()->user();
         $carts = $user->carts()->where('status',1)->first();

@@ -150,12 +150,14 @@ endif;
                 <div class="main-search d-xs-none d-sm-block mr-auto">
                     
                     <form class="main-search-form" method="get" action="{{ route('search') }}">
-                        @csrf
+                       
                         <div class="input-group">
                             <div class="input-group-prepend">
                                     @if (Request::is('category/*') || Request::is('search') )
                                         @if ($currentCategory)
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="{{ $currentCategory->slug }}" aria-expanded="false">{{ $currentCategory->name }}</button>
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="{{ $currentCategory->slug }}" aria-expanded="false">{{ $currentCategory->name }}</button>
+                                        @else
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="" aria-expanded="false">Todo</button>    
                                         @endif
                                     @else
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="btn-search-options" data-toggle="dropdown" aria-haspopup="true" data-selected="" aria-expanded="false">Todo</button>
