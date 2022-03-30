@@ -1,16 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/pages/order-tracking.css')}}" rel="stylesheet" type="text/css">
 <div class="gray-page-bg">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="section-title mb-3">
-                    <small><a href="{{route('home')}}">Mi cuenta</a> > Pedidos</small>
-                    <h4 class="mt-1">Pedidos <span>realizados</span></h4>
+                    <small><a href="{{route('home')}}">Mi cuenta</a> > Pedidos > Pedido #{{ $order->number ?? "?" }}</small>
+                    <h4 class="mt-1">Detalle del pedido <span>{{ $order->number ?? "?" }}</span></h4>
                 </div>
                 <div class="orders-container">
-                    @forelse ($orders as $order)
+                    @if ($order)
+                    <div class="row my-5">
+                        <div class="col">
+                            <div class="progress-container">
+                                <ul class="progressbar">
+                                    <li class="active">COMPRADO</li>
+                                    <li>PREPARANDO</li>
+                                    <li>EN CAMINO PARA ENTREGA</li>
+                                    <li>ENTREGADO</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                         
                     <div class="card my-3">
                         <div class="card-header">
@@ -42,23 +55,16 @@
                                 
                                     
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="{{ route('user.order.track', [ 'n' => $order->number] ) }}" class="btn btn-dark btn-block">Rastrear pedido</a>
-                                    {{-- <a href="#" class="btn btn-outline-dark btn-block">Devolver pedido</a>
-                                    <a href="#" class="btn btn-outline-dark btn-block">Evaluar al vendedor</a>
-                                    <a href="#" class="btn btn-outline-dark btn-block">Escribir una opinión</a> --}}
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span class="text-uppercase text-success">Pendiente</span> 
+                            <span class="text-uppercase text-success">PREPARANDO</span> 
                             {{-- |
                             <span class="text-muted">Jueves 27 Agosto, 2020</span> --}}
                         </div>
                     </div>
-                    @empty
-                        
-                    @endforelse
+                    @endif
 
                     
                 </div>

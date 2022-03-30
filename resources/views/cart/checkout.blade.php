@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="{{asset('js/pages/checkout/cart.js')}}"></script>
+
+<script src="{{asset('js/pages/checkout/chkform.js')}}"></script>
 <div class="gray-page-bg">
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -18,11 +19,11 @@
                     <div class="payment-info-container mb-3">
                         <div class="direcciones-container mb-3">
                             <div class="card">
-                                @error('place')
+                                @if($errors->any())
                                 <div class="p-3">
-                                    <div class="alert alert-danger p-3">Favor seleccionar una dirección de entrega.</div>
+                                    <div class="alert alert-danger p-3">Favor completar todos los campos requeridos</div>
                                 </div>
-                                @enderror
+                                @endif
                                 <div class="p-3 section-title">
                                     <h5 class="mt-1">Seleccionar dirección de entrega</h5>
                                 </div>
@@ -45,11 +46,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="p-3 section-title">
+                                    <h5 class="mt-1">Tipo de envío</h5>
+                                </div>
+                                @foreach ($shipping_types as $type) 
+                                <label for="shipping_type{{ $type->id }}" class="list-group-item list-group-item-action">
+                                    <input class="float-right" type="radio" name="shipping_type" value="{{ $type->id }}" id="shipping_type{{ $type->id }}">
+                                    <div class="list-group-item-text">
+                                        <div>
+                                        {{ $type->labelText }}<br>
+                                        <span class="text-muted">{{ App\Cart::mformat($type->price) }}</span>
+                                        </div>
+                                    </div>
+                                </label> 
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <div class="payment-form">
                                     <div class="section-title mb-3">
-                                        <h5 class="mt-1">Total: <span>{{ App\Cart::mformat($subtotal) }}</span></h5>
+                                        <h5 class="mt-1">Total: <span>{{ App\Cart::mformat($subtotal) }}</span> <br><small class="font-italic text-muted">Total no incluye envío</small></h5>
                                     </div>
                                         <div class="form-group">
                                             <label for="card">Número de tarjeta</label>
@@ -107,21 +126,22 @@
                                                             <input type="text" name="billAddress2" id="billAddress2" class="form-control">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="card">Ciudad</label>
-                                                            <select name="cities" id="cities" class="form-control">
-                                                                @foreach ($cities as $city)
-                                                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                                            <label for="card">Estado/Departamento</label>
+                                                            <select name="states" id="states" data-service="{{route('api.places.getCities')}}" class="form-control">
+                                                                @foreach ($states as $state)
+                                                                    <option data-id="{{ $state->id }}" value="{{$state->name}}">{{$state->name}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="card">Estado/Departamento</label>
-                                                            <select name="states" id="states" class="form-control">
-                                                                @foreach ($states as $state)
-                                                                    <option value="{{$state->name}}">{{$state->name}}</option>
-                                                                @endforeach
+                                                            <label for="card">Ciudad</label>
+                                                            <select name="cities" id="cities" class="form-control" disabled>
+                                                                {{-- @foreach ($cities as $city)
+                                                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                                                @endforeach --}}
                                                             </select>
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             

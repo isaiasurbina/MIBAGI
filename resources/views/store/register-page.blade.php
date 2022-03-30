@@ -25,9 +25,9 @@
                             @if ($errors->any())
                                 <div class="alert alert-danger p-3">
                                     <ul>
-                                        @foreach ($errors->all() as $error)
+                                        {{-- @foreach ($errors->all() as $error) --}}
                                             <li>Completar campos requeridos</li>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     </ul>
                                 </div>
                             @endif

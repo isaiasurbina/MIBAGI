@@ -188,9 +188,9 @@
                                                     </div>
                                                     
                                                     @if(!$edit)
-                                                        <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control" placeholder="Ej: 19.99">
+                                                        <input type="number" step=".01" name="price" id="price" value="{{ old('price') }}" class="form-control" placeholder="Ej: 19.99">
                                                     @else
-                                                        <input type="number" name="price" id="price" value="{{ $product->presentPrice(true) }}" class="form-control" placeholder="Ej: 19.99">
+                                                        <input type="number" step=".01" name="price" id="price" value="{{ $product->presentPrice(true) }}" class="form-control" placeholder="Ej: 19.99">
                                                     @endif
                                                 </div>
                                             </div>

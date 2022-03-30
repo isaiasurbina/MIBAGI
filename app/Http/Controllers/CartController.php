@@ -10,6 +10,7 @@ use App\DeliveryPlaces;
 use App\City;
 use App\State;
 use App\Payment;
+use App\ShippingType;
 use Illuminate\Http\Request;
 use SoapClient;
 
@@ -68,20 +69,24 @@ class CartController extends Controller
     public function checkout(){
         $user = auth()->user();
         $places = $user->places()->get();
+        $shipping_types = ShippingType::all();
         $cities = City::all();
         $states = State::all();
 
         $cart = Cart::where('status',1)->first();
+
         $subtotal = 0;
         if($cart){
             foreach ($cart->products()->get() as $product) {
                 $itemSubtotal = intval($product->pivot->quantity) * intval($product->price);
                 $subtotal += $itemSubtotal ;
             }
+            $source = compact('places', 'subtotal', 'cart', 'cities', 'states', 'shipping_types');
+            return view('cart.checkout', $source);
+        }else{
+            abort(404);
         } 
 
-        $source = compact('places', 'subtotal', 'cart', 'cities', 'states');
-        return view('cart.checkout', $source);
     }
     public function getTheAmount($left_zeros = true){
         $cart = Cart::where('status',1)->first();
@@ -114,6 +119,12 @@ class CartController extends Controller
     public function authorizepayment(Request $request){
         $validated = $request->validate([
             'place' => 'required',
+            'card' => 'required',
+            'cardholderFirstname' => 'required',
+            'cardholderLastname' => 'required',
+            'duedate_m' => 'required',
+            'duedate_y' => 'required',
+            'card_cvv' => 'required'
         ]);
         $cart = Cart::where('status',1)->first();
         $currency = '840';
@@ -199,9 +210,9 @@ class CartController extends Controller
         $result = $client->Authorize($AuthorizeRequest);
         
         if($result->AuthorizeResult->CreditCardTransactionResults->ReasonCode == 1):
-            $this->placeorder($cart, $orderNumber,$request->place,$amount,$result->AuthorizeResult->CreditCardTransactionResults);
+            return $this->placeorder($cart, $orderNumber,$request->place,$amount,$result->AuthorizeResult->CreditCardTransactionResults,$request->shipping_type);
         else:
-            $this->paymentException($result);
+            return $this->paymentException($result);
         endif;
     }
     function paymentException($result){
@@ -220,21 +231,19 @@ class CartController extends Controller
         return $signature;
     }
     //public function placeorder(Request $request){
-    public function placeorder($cart, $order_number,$place,$total,$CreditCardTransactionResults){
+    public function placeorder($cart, $order_number,$place,$total,$CreditCardTransactionResults,$shipping){
 
-        /* $validated = $request->validate([
-            'place' => 'required',
-        ]); */
+        
 
         $user = auth()->user();
         
         $cart->status = 9;
         $cart->save();
         $tomorrow = Carbon::tomorrow();
-
+        
         //insertar la orden
         $orderData['number'] = $order_number;
-        $orderData['shipping'] = 1;
+        $orderData['shipping'] = $shipping;
         $orderData['status'] = 1;
         $orderData['date_to_send'] = $tomorrow->toDateTimeString();
         $tomorrow->addDays(5);
@@ -253,9 +262,9 @@ class CartController extends Controller
         }
         $order->stores()->sync($store_ids);
         
-        var_dump($order);
-        //return redirect()->route('cart.finish', ['order'=>$order->number]);
-        return view('cart.placeorder', ['order'=>$order->number] );
+        $source = compact('order');
+        return redirect()->route('cart.finish', ['order'=>$order->number]);
+        
     }
     public function savePayment($CreditCardTransactionResults){
         $data = (array) $CreditCardTransactionResults;

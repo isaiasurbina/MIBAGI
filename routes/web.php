@@ -59,6 +59,7 @@ Route::get('/user/profile', 'UserController@profile')->name('user.profile');
     Route::post('/user/profile/save', 'UserController@profileSave')->name('user.profile.save');
 Route::get('/user/orders', 'UserController@orders')->name('user.orders');
 Route::get('/user/order/support', 'UserController@orderSupportForm')->name('user.order.support');
+Route::get('/user/order/track/{n}', 'UserController@orderTraking')->name('user.order.track');
 
 Route::get('c/{view}', 'MainController@showView')->name('view');
 

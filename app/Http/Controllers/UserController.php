@@ -110,6 +110,12 @@ class UserController extends Controller
         $source = compact('orders');
         return view('user.orders', $source);
     }
+    public function orderTraking($n){
+        $user = auth()->user();
+        $order = $user->orders()->where('number',$n)->first();
+        $source = compact('order');
+        return view('user.ordertraking', $source);
+    }
     public function profileSave(Request $request){
         $validatedData = $request->validate([
             'fullname' => 'required|max:255'

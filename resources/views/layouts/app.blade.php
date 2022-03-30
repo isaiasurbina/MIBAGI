@@ -362,7 +362,7 @@ endif;
                                     </div>
                               </div>
                               <div class="footer-text">
-                                  <p>Rum soluta nobis est eligendi optio cumque nihil impedit quo minus ides quod maxime placeat facer.</p>
+                                  <p>{{ __('text.brand')}}</p>
                               </div>
                               <hr>
                               <h4 class="footer-content">Suscribete</h4>
@@ -397,7 +397,7 @@ endif;
                           <div class="footer-wrapper mb-30">
                               <h3 class="footer-title pt-10">Contactanos</h3>
                               <div class="footer-info">
-                                  <p>Sed perspiciatis unde omnis iste natus error sit volupta ccusantium dolore mque laudant ium</p>
+                                  <p>Será un placer atender cualquier duda o necesidad que tengas. Ponte en contacto con nosotros.</p>
                               </div>
                               <ul class="footer-address">
                                   <li>
@@ -406,7 +406,7 @@ endif;
                                       </div>
                                       <div class="footer-address-text">
                                           <span>Teléfono</span>
-                                          <h5><a href="#">+503 2222-0000</a></h5>
+                                          <h5><a href="#">+503 7255-4154</a></h5>
                                       </div>
                                   </li>
                                   <li>
@@ -415,7 +415,7 @@ endif;
                                       </div>
                                       <div class="footer-address-text">
                                           <span>Correo electronico</span>
-                                          <h5><a href="#">support@marketplace.com</a></h5>
+                                          <h5><a href="#">soporte@mibagi.com</a></h5>
                                       </div>
                                   </li>
                                   <li>
@@ -424,7 +424,7 @@ endif;
                                       </div>
                                       <div class="footer-address-text">
                                           <span>Nuestras oficinas</span>
-                                          <h5><a href="#">123 Main St, San Salvador, El Salvador</a></h5>
+                                          <h5><a href="#">Calle a Huizucar, Kuaukali, 2E, Nuevo Cuscatlán, La libertad</a></h5>
                                       </div>
                                   </li>
                               </ul>

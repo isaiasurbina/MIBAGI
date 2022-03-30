@@ -721,5 +721,6 @@
     "auth.failed": "Correo electrónico o contraseña incorrectos.",
     "validation.min.string": "El campo debe tener :min caracteres como mínimo.",
     "validation.unique": "El campo ya existe en nuestra base de datos",
-    "validation.confirmed": "El campo no concuerda."
+    "validation.confirmed": "El campo no concuerda.",
+    "text.brand": "Aquí encontrarás los mejores productos en la región centroamericana y con los mejores tiempos de entrega."
   }

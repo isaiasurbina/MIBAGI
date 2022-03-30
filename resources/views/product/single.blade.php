@@ -15,9 +15,9 @@
                         <div class="swiper-container main-gallery-container">
                             <div class="swiper-wrapper">
                                 @forelse ($product->images as $item)
-                                    <div class="swiper-slide"><img src="{{ $item->filename }}" /></div>
+                                    <div class="swiper-slide"><img src="{{ env('APP_URL') . $item->filename }}" /></div>
                                 @empty
-                                    <div class="swiper-slide"><img src="{{ $product->thumbnail }}" /></div>
+                                    <div class="swiper-slide"><img src="{{ env('APP_URL') . $product->thumbnail }}" /></div>
                                 @endforelse
                             </div>
                         </div>
@@ -28,9 +28,9 @@
                                 @php
                                 $th = Str::beforeLast($item->filename,'.png');
                                 @endphp
-                                <div class="swiper-slide"><img src="{{ $th . '_300.png' }}" /></div>
+                                <div class="swiper-slide"><img src="{{ env('APP_URL') . $th . '_300.png' }}" /></div>
                             @empty
-                                <div class="swiper-slide"><img src="{{ $product->thumbnail }}" /></div>
+                                <div class="swiper-slide"><img src="{{ env('APP_URL') . $product->thumbnail }}" /></div>
                             @endforelse
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <button type="submit" class="btn btn-block btn-sm btn-primary my-2">Agregar a mi Bag</button>
                         </form>
-                        <a href="javascript:void(0)" class="btn btn-block btn-sm btn-warning text-white">Comprar</a>
+                        {{-- <a href="javascript:void(0)" class="btn btn-block btn-sm btn-warning text-white">Comprar</a> --}}
                         <a href="javascript:void(0)" class="btn btn-block btn-sm btn-light">Agregar a mi lista</a>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                         <div class="col-md-2">
                             <div class="card">
                                 <a href="{{ $link }}">
-                                    <div class="card-header-image" style="background-image: url('{{ $item->thumbnail }}')"></div>
+                                    <div class="card-header-image" style="background-image: url('{{ env('APP_URL') . $item->thumbnail }}')"></div>
                                 </a>
                                 <div class="card-body">
                                     <div class="text-nowrap text-truncate">
