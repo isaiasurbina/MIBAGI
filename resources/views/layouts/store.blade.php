@@ -116,18 +116,18 @@
         @else
         <header>     
         @endif
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
             
             <div class="logo mr-3">
                 <a class="brand-container" href="{{ url('/home') }}">
-                    <img src="{{ asset('img/Mibagi-brand.png') }}" class="brand" /> <span class="badge bg-navi text-white">Vendedor</span>
+                    <img src="{{ asset('img/Mibagi-brand-bg-dark.png') }}" class="brand" /> <span class="badge bg-navi text-white">Vendedor</span>
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
         
-            <div class="collapse navbar-collapse justify-content-right " id="navbarColor01">
+            <div class="collapse navbar-collapse justify-content-right " id="">
               
                 
                 <div class="header-top-right ml-auto">
@@ -167,12 +167,12 @@
 
         
 
-        <main class="main-container bg-dark">
+        <main class="main-container">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-menu col-md-2 p-0">
+                    <div class="col-12 col-menu col-md-2 p-0" >
                         {{-- MAIN MENU --}}
-                        <div class="list-group bg-primary store-list-group" style="background-color: #011640">
+                        <div class="list-group bg-primary store-list-group" >
                             <a href="{{ route('store.dashboard') }}" class="{{ Route::is('store.dashboard') ? 'active':'' }} list-group-item list-group-item-action bg-transparent">
                                 <i class="fad fa-tachometer-alt-fast"></i> Dashboard
                             </a>
@@ -196,7 +196,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-right-main-container col-md-10">
+                    <div class="col-12 col-right-main-container col-md-10 bg-store-manager">
                         @if ( session('alert-success') || session('alert-danger') || session('alert-warning') )
                             <div class="container alert-container">
                                 <div class="row justify-content-center">
@@ -205,7 +205,7 @@
                     
                                             <div class="alert-icon mr-1"><i class="fal {{ App\Main::alertIcon() }}"></i></span></div>
                     
-                                            <div class="alert-text">{{ App\Main::alertMessage()  }}</div>
+                                            <div class="alert-text">{{ __(App\Main::alertMessage()) }}</div>
                                             <div class="alert-dismiss float-right"><a href="javascript:void(0)" data-dismiss="alert" class=""><i class="fad fa-times-square"></i></a></div>
                                         </div>
                                     </div>

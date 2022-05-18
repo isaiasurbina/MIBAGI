@@ -7,9 +7,13 @@ use App\product;
 use App\ProductVariation;
 use App\categories;
 use App\Upload;
+use App\Mail\OrderPlaced;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class StoreController extends Controller
@@ -190,5 +194,59 @@ class StoreController extends Controller
         endif;
 
         return json_encode($response);
+    }
+    public function orderUpdate($order,$status){
+        $orderObj = App\Order::where('number',$order)->first();
+        $statusStrings = $orderObj->orderStatusLabels;
+        $statusID = array_search($status,$statusStrings);
+        
+        if($statusID){
+            $orderObj->status = $statusID;
+            $orderObj->save();
+            $this->orderStatusChange($orderObj,$statusID);
+            return back()->with('alert-success', 'order.status_updated');
+        }else{
+            return back()->with('alert-warning','order.status_updated_error');
+        }
+    }
+    public function orderStatusChange($order,$status){
+        //check wich of the following is and take actions
+        //1 => 'RECEIVED', 2 => 'PENDING', 3 => 'PROCESSING', 4 => 'SHIPPED'
+        // 5 => 'CANCEL_BY_USER', 6 => 'REFUND_REQUEST', 7 => 'REFUNDED', 8 => 'DELIVERED'
+        $user = App\User::find($order->buyer_id);
+        if($user):
+            switch ($status) {
+                case 1:
+                    //send alert order was placed USER | BUSINESS
+                    Mail::to($user)->send(new OrderPlaced($order));
+                    break;
+                case 2:
+                    //do nothing
+                    break;
+                case 3:
+                    //send alert order is processing USER
+                    break;
+                case 4:
+                    //send alert order is shipped USER
+                    Mail::to($user)->send(new OrderShipped($order));
+                    break;
+                case 5:
+                    //send alert order is cancelled USER
+                    break;
+                case 6:
+                    //send alert order is requesting refund BUSINESS
+                    break;
+                case 7:
+                    // send alert order is refunded USER
+                    break;
+                case 8:
+                    // send alert order is delivered USER
+                    break;
+                
+                default:
+                    # code...
+                    break;
+                }
+        endif;
     }
 }

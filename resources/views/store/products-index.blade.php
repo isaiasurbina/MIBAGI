@@ -9,7 +9,7 @@
             </div>
             <hr class="hr mt-2 mb-3" />
             <div class="toolbar my-3">
-                <a href="{{ route('store.catalog.add') }}" class="btn btn-warning">Agregar nuevo producto</a>
+                <a href="{{ route('store.catalog.add') }}" class="btn btn-sm btn-dark">Agregar nuevo producto</a>
             </div>
             <div class="table-container">
                 <table class="table table-striped table-borderless">
@@ -43,10 +43,10 @@
                             {{-- <td>{{ $item->title }}</td> --}}
                             <td class="text-center">
                                 @if($item->status == 'PUBLISHED')
-                                <a href="{{ $link }}" target="_blank" class="btn btn-warning" title="Ver en la tienda" alt="Ver en la tienda"><i class="fas fa-eye"></i></a>
+                                <a href="{{ $link }}" target="_blank" class="btn btn-sm btn-dark" title="Ver en la tienda" alt="Ver en la tienda"><i class="fas fa-eye"></i></a>
                                 @endif
                                 {{-- <a href="javascript:void(0)" class="btn btn-warning " title="Eliminar?"><i class="fas fa-trash"></i></a> --}}
-                                <a href="{{ route('store.product.edit', ['id'=> md5($item->id) ]) }}" class="btn btn-warning " title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('store.product.edit', ['id'=> md5($item->id) ]) }}" class="btn btn-sm btn-dark " title="Editar"><i class="fas fa-pencil-alt"></i></a>
                             </td>
                         </tr>
                         @empty

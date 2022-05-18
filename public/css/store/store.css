@@ -6,6 +6,7 @@
     height: 100%;
     position: absolute;
     min-width: 200px;
+    width: 100%;
 }
 .col-right-main-container{
     min-height: calc(100vh - 61px);
@@ -85,4 +86,7 @@ footer.bottom-fixed{
 }
 #thumbnail-card-1.store-banner{
     height: auto;
+}
+.bg-store-manager{
+    background-color: #f1f1f1;
 }

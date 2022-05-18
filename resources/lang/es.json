@@ -722,5 +722,15 @@
     "validation.min.string": "El campo debe tener :min caracteres como mínimo.",
     "validation.unique": "El campo ya existe en nuestra base de datos",
     "validation.confirmed": "El campo no concuerda.",
-    "text.brand": "Aquí encontrarás los mejores productos en la región centroamericana y con los mejores tiempos de entrega."
+    "text.brand": "Aquí encontrarás los mejores productos en la región centroamericana y con los mejores tiempos de entrega.",
+    "RECEIVED": "Recibida",
+    "PENDING_PAYMENT": "Pendiente de pago",
+    "PROCESSING" : "Procesando",
+    "SHIPPED" : "Enviada",
+    "CANCEL_BY_USER" : "Cancelada por el usuario",
+    "REFUND_REQUEST" : "Solicito reembolso",
+    "REFUNDED" : "Reembolso",
+    "DELIVERED" : "Entregada",
+    "order.status_updated" : "El estado de la orden ha sido actualizado",
+    "order.status_updated_error" : "El estado de la orden no se pudo actualizar"
   }

@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span class="text-uppercase text-success">Pendiente</span> 
+                            <span class="text-uppercase text-success">{{ __($order->getStatus()) }}</span> 
                             {{-- |
                             <span class="text-muted">Jueves 27 Agosto, 2020</span> --}}
                         </div>

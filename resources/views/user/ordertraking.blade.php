@@ -16,10 +16,13 @@
                         <div class="col">
                             <div class="progress-container">
                                 <ul class="progressbar">
-                                    <li class="active">COMPRADO</li>
-                                    <li>PREPARANDO</li>
-                                    <li>EN CAMINO PARA ENTREGA</li>
-                                    <li>ENTREGADO</li>
+                                    @php
+                                    $statusID = intval($order->status);
+                                    @endphp
+                                    <li {{ ( $statusID >= 1) ? "class=active":"" }}>COMPRADO</li>
+                                    <li {{ ( $statusID >= 3) ? "class=active":"" }}>PREPARANDO</li>
+                                    <li {{ ( $statusID >= 4) ? "class=active":"" }} >EN CAMINO PARA ENTREGA</li>
+                                    <li {{ ( $statusID == 8) ? "class=active":"" }}>ENTREGADO</li>
                                 </ul>
                             </div>
                         </div>
@@ -59,7 +62,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span class="text-uppercase text-success">PREPARANDO</span> 
+                            <span class="text-uppercase text-success">{{ __($order->getStatus()) }}</span> 
                             {{-- |
                             <span class="text-muted">Jueves 27 Agosto, 2020</span> --}}
                         </div>

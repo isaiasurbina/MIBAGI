@@ -76,6 +76,9 @@ Route::get('/store/catalog', 'StoreController@catalog')->name('store.catalog');
     Route::get('/store/product/edit/{id}', 'StoreController@edit')->name('store.product.edit');
 Route::get('/store/orders', 'StoreController@ordersIndex')->name('store.orders');
     Route::get('/store/orders/{order}', 'StoreController@orderDetail')->name('store.order.detail');
+
+    Route::get('/store/orders/{order}/update/{status}', 'StoreController@orderUpdate')->name('store.order.update');
+
 Route::get('/store/stock', 'StoreController@stock')->name('store.stock');
 Route::get('/store/reports', 'StoreController@reports')->name('store.reports');
 Route::get('/store/messages', 'StoreController@messages')->name('store.messages');
